@@ -1,5 +1,7 @@
 # cid
 
+[![Circle CI](https://circleci.com/gh/s32x/cid/tree/master.svg?style=svg)](https://circleci.com/gh/s32x/cid/tree/master)
+
 cid (short for custom-import-domains) is a go package that can be used to host an import proxy service pointing to your host go repositories.
 
 ## Usage
