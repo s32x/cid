@@ -7,14 +7,10 @@ cid (short for custom-import-domains) is a go package that can be used to host a
 ```go
 package main
 
-import (
-	"os"
-
-	"s32x.com/s32x/cgi"
-)
+import "s32x.com/cid"
 
 func main() {
-	cgi.Start(
+	cid.Start(
 		// The page to redirect to when the index is requested
 		"https://swolfe.me",
 		// Where to retrieve the requested repository from
