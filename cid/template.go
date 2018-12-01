@@ -1,4 +1,4 @@
-package cid /* import "s32x.com/cid" */
+package cid /* import "s32x.com/cid/cid" */
 
 import (
 	"html/template"

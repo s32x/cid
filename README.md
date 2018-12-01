@@ -1,15 +1,22 @@
 # cid
 
 [![Circle CI](https://circleci.com/gh/s32x/cid/tree/master.svg?style=svg)](https://circleci.com/gh/s32x/cid/tree/master)
+[![GoDoc](https://godoc.org/github.com/s32x/cid/cid?status.svg)](https://godoc.org/github.com/s32x/cid/cid)
 
-cid (short for custom-import-domains) is a go package that can be used to host an import proxy service pointing to your host go repositories.
+cid (short for custom-import-domains) is a go package that can be used to host an import proxy service pointing to your hosted go repositories.
 
 ## Usage
+
+You have two options for using the API: 
+* Import the child dependency using the below go example.
+* Run the docker image `s32x/cid`.
+
+### Go example
 
 ```go
 package main
 
-import "s32x.com/cid"
+import "s32x.com/cid/cid"
 
 func main() {
 	cid.Start(
@@ -25,28 +32,43 @@ func main() {
 }
 ```
 
-The MIT License (MIT)
-=====================
+### Running with Docker
+```
+docker run -p 8080:8080 -e REDIRECT=https://swolfe.me -e USER_URL=github.com/s32x -e DOMAIN=s32x.com -e PORT=8080 s23x/cid
+```
 
-Copyright © 2018 Steven Wolfe
+### Installing
+```
+go get s32x.com/ovrstat
+ovrstat
+```
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the “Software”), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
+The BSD 3-clause License
+========================
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+Copyright (c) 2018, Steven Wolfe. All rights reserved.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+ - Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+ - Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+ - Neither the name of cid nor the names of its contributors may
+   be used to endorse or promote products derived from this software without
+   specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
