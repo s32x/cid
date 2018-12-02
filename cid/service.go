@@ -26,21 +26,20 @@ func Start(redirect, userURL, domain, port string) {
 	})
 
 	// Bind the redirect for all repositories
-	e.GET("/:repo", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "", &Data{
-			UserURL: userURL,
-			Domain:  domain,
-			Message: "Nothing to see here;",
-			Path:    c.Param("repo"),
-		})
-	})
-	e.GET("/:repo/*", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "", &Data{
-			UserURL: userURL,
-			Domain:  domain,
-			Message: "Nothing to see here;",
-			Path:    c.Param("repo"),
-		})
-	})
+	e.GET("/:repo", repo(userURL, domain))
+	e.GET("/:repo/*", repo(userURL, domain))
 	e.Logger.Fatal(e.Start(":" + port))
+}
+
+// repo handles rendering an html repository redirect page with the proper
+// head metadata
+func repo(userURL, domain string) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		return c.Render(http.StatusOK, "", &Data{
+			UserURL: userURL,
+			Domain:  domain,
+			Message: "Nothing to see here;",
+			Path:    c.Param("repo"),
+		})
+	}
 }
