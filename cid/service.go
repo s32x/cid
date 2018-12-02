@@ -26,12 +26,20 @@ func Start(redirect, userURL, domain, port string) {
 	})
 
 	// Bind the redirect for all repositories
-	e.GET("/*", func(c echo.Context) error {
+	e.GET("/:repo", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "", &Data{
 			UserURL: userURL,
 			Domain:  domain,
 			Message: "Nothing to see here;",
-			Path:    c.Request().URL.Path,
+			Path:    c.Param("repo"),
+		})
+	})
+	e.GET("/:repo/*", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "", &Data{
+			UserURL: userURL,
+			Domain:  domain,
+			Message: "Nothing to see here;",
+			Path:    c.Param("repo"),
 		})
 	})
 	e.Logger.Fatal(e.Start(":" + port))
