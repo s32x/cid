@@ -39,8 +39,8 @@ docker run -p 8080:8080 -e REDIRECT=https://swolfe.me -e USER_URL=github.com/s32
 
 ### Installing
 ```
-go get s32x.com/ovrstat
-ovrstat
+go get s32x.com/cid
+cid
 ```
 
 The BSD 3-clause License
