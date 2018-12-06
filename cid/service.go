@@ -8,7 +8,7 @@ import (
 )
 
 // Start starts the import proxy service using the passed configuration vars
-func Start(redirect, userURL, domain, port string) {
+func Start(userURL, domain, port string) {
 	// Initialize the echo Echo and bind middleware
 	e := echo.New()
 	e.HideBanner = true
@@ -22,7 +22,7 @@ func Start(redirect, userURL, domain, port string) {
 
 	// Configure the domain redirect on the index
 	e.GET("/", func(c echo.Context) error {
-		return c.Redirect(http.StatusTemporaryRedirect, redirect)
+		return c.Redirect(http.StatusTemporaryRedirect, userURL)
 	})
 
 	// Bind the redirect for all repositories

@@ -18,10 +18,10 @@ const temp = `<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="go-import" content="{{.Domain}}/{{.Path}} git https://{{.UserURL}}/{{.Path}}">
-		<meta http-equiv="refresh" content="0; url=http://{{.Domain}}">
+		<meta name="go-import" content="{{.Domain}}/{{.Path}} git {{.UserURL}}/{{.Path}}">
+		<meta http-equiv="refresh" content="0; url={{.UserURL}}/{{.Path}}">
 	</head>
-	<body>{{.Message}}<a href="http://{{.Domain}}">move along</a>.</body>
+	<body>{{.Message}}<a href="{{.UserURL}}/{{.Path}}">move along</a>.</body>
 </html>`
 
 // Template is a renderer that contains html templates

@@ -9,8 +9,6 @@ import (
 
 func main() {
 	cid.Start(
-		// The page to redirect to when the index is requested
-		getenv("REDIRECT"),
 		// Where to retrieve the requested repository from
 		getenv("USER_URL"),
 		// The domain this service will be being hosted on

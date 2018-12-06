@@ -20,10 +20,8 @@ import "s32x.com/cid/cid"
 
 func main() {
 	cid.Start(
-		// The page to redirect to when the index is requested
-		"https://swolfe.me",
 		// Where to retrieve the requested repository from
-		"github.com/s32x",
+		"https://github.com/s32x",
 		// The domain this service will be being hosted on
 		"s32x.com",
 		// The port this service will be hosted on
@@ -34,7 +32,7 @@ func main() {
 
 ### Running with Docker
 ```
-docker run -p 8080:8080 -e REDIRECT=https://swolfe.me -e USER_URL=github.com/s32x -e DOMAIN=s32x.com -e PORT=8080 s23x/cid
+docker run -p 8080:8080 -e USER_URL=https://github.com/s32x -e DOMAIN=s32x.com -e PORT=8080 s23x/cid
 ```
 
 ### Installing
