@@ -1,5 +1,0 @@
-package: s32x.com/cid
-import:
-- package: github.com/labstack/echo
-  subpackages:
-  - middleware

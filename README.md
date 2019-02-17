@@ -20,19 +20,16 @@ import "s32x.com/cid/cid"
 
 func main() {
 	cid.Start(
-		// Where to retrieve the requested repository from
-		"https://github.com/s32x",
-		// The domain this service will be being hosted on
-		"s32x.com",
-		// The port this service will be hosted on
-		"8080",
+		"https://github.com/s32x", 	// Where to retrieve the requested repository from
+		"s32x.com", 				// The domain this service will be being hosted on
+		"8080", 					// The port this service will be hosted on
 	)
 }
 ```
 
 ### Running with Docker
 ```
-docker run -p 8080:8080 -e USER_URL=https://github.com/s32x -e DOMAIN=s32x.com -e PORT=8080 s23x/cid
+docker run -p 8080:8080 -e USER_URL=https://github.com/s32x -e DOMAIN=s32x.com -e PORT=8080 s32x/cid
 ```
 
 ### Installing
@@ -44,7 +41,7 @@ cid
 The BSD 3-clause License
 ========================
 
-Copyright (c) 2018, Steven Wolfe. All rights reserved.
+Copyright (c) 2019, Steven Wolfe. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
