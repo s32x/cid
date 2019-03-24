@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"io"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 // renderer is the custom webpage renderer that can be used as an echo.Renderer

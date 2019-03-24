@@ -3,8 +3,8 @@ package cid /* import "s32x.com/cid/cid" */
 import (
 	"net/http"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 // Start starts the import proxy service using the passed configuration vars
