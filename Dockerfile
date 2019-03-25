@@ -19,8 +19,7 @@ RUN CGO_ENABLED=0 go build -o ./bin/server
 FROM alpine:latest
 
 # Dependencies
-RUN apk update && \
-    apk add --no-cache ca-certificates curl
+RUN apk update && apk add --no-cache ca-certificates
 
 # Binary
 COPY --from=builder /src/bin/server /usr/local/bin/server
