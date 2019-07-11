@@ -1,0 +1,24 @@
+{
+    "name": "cid",
+    "profile": "default",
+    "lambda": {
+        "warm": true,
+        "warm_count": 5
+    },
+    "regions": [
+        "us-east-1"
+    ],
+    "stages": {
+        "production": {
+            "domain": "s32x.com",
+            "zone": false
+        }
+    },
+    "error_pages": {
+        "disable": true
+    },
+    "environment": {
+        "USER_URL": "https://github.com/s32x",
+        "DOMAIN": "s32x.com"
+    }
+}
