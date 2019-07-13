@@ -9,10 +9,8 @@ deps:
 test:
 	go test ./...
 
-prune:
-	up prune -r 5
-
 deploy: deps test
+	up prune -s production -r 2
 	-up stack plan
 	-up stack apply
 	up deploy production
