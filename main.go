@@ -1,4 +1,4 @@
-package main /* import "s32x.com/cid" */
+package main
 
 import (
 	"log"
