@@ -8,11 +8,13 @@ import (
 )
 
 func main() {
-	cid.Start(
-		getenv("USER_URL"),     // Where to retrieve the requested repository from
-		getenv("DOMAIN"),       // The domain this service will be being hosted on
-		getenv("PORT", "8080"), // The port this service will be hosted on
+	e := cid.Echo(
+		getenv("USER_URL"), // Where to retrieve the requested repository from
+		getenv("DOMAIN"),   // The domain this service will be being hosted on
 	)
+	e.Logger.Fatal(e.Start(
+		":" + getenv("PORT", "8080"), // The port this service will be hosted on
+	))
 }
 
 // getenv attempts to retrieve and return a variable from the environment. If it

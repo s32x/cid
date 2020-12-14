@@ -19,11 +19,13 @@ package main
 import "s32x.com/cid/cid"
 
 func main() {
-	cid.Start(
-		"https://github.com/s32x", 	// Where to retrieve the requested repository from
-		"s32x.com", 				// The domain this service will be being hosted on
-		"8080", 					// The port this service will be hosted on
+  e := cid.Echo(
+		"https://github.com/s32x", // Where to retrieve the requested repository from
+		"s32x.com",   // The domain this service will be being hosted on
 	)
+	e.Logger.Fatal(e.Start(
+		":8080", // The port this service will be hosted on
+	))
 }
 ```
 
