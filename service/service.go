@@ -1,4 +1,4 @@
-package cid /* import "s32x.com/cid/service" */
+package service /* import "s32x.com/cid/service" */
 
 import (
 	"html/template"
