@@ -4,14 +4,14 @@ import (
 	"log"
 	"os"
 
-	"s32x.com/cid/cid"
+	cid "s32x.com/cid/service"
 )
 
 func main() {
-	e := cid.Echo(
+	e := cid.New(
 		getenv("USER_URL"), // Where to retrieve the requested repository from
 		getenv("DOMAIN"),   // The domain this service will be being hosted on
-	)
+	).Echo()
 	e.Logger.Fatal(e.Start(
 		":" + getenv("PORT", "8080"), // The port this service will be hosted on
 	))

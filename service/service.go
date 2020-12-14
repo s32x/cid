@@ -1,4 +1,4 @@
-package cid
+package cid /* import "s32x.com/cid/service" */
 
 import (
 	"html/template"
@@ -23,9 +23,19 @@ const repoTemp = `<!DOCTYPE html>
 // renderer is the custom webpage renderer that can be used as an echo.Renderer
 var renderer = &Template{template.Must(template.New("repo").Parse(repoTemp))}
 
+// Service contains the required data needed for hosting a custom go import
+// domain API
+type Service struct{ userURL, domain string }
+
+// New creates and returns a new Service struct reference using the passed
+// params
+func New(userURL, domain string) *Service {
+	return &Service{userURL: userURL, domain: domain}
+}
+
 // Echo creates and returns a fully configured echo router that is able to proxy
 // git repos for a user
-func Echo(userURL, domain string) *echo.Echo {
+func (s *Service) Echo() *echo.Echo {
 	// Initialize the echo Echo and bind middleware
 	e := echo.New()
 	e.HideBanner = true
@@ -43,12 +53,12 @@ func Echo(userURL, domain string) *echo.Echo {
 
 	// Bind the redirect for the user
 	e.GET("/", func(c echo.Context) error {
-		return c.Redirect(http.StatusTemporaryRedirect, userURL)
+		return c.Redirect(http.StatusTemporaryRedirect, s.userURL)
 	})
 
 	// Bind the redirect for all repositories
-	e.GET("/:repo", repo(userURL, domain))
-	e.GET("/:repo/*", repo(userURL, domain))
+	e.GET("/:repo", s.repo)
+	e.GET("/:repo/*", s.repo)
 	e.GET("/healthcheck", func(c echo.Context) error {
 		return c.NoContent(http.StatusOK)
 	})
@@ -60,15 +70,13 @@ type Repo struct{ UserURL, Domain, Message, Path string }
 
 // repo handles rendering an html repository redirect page with the proper
 // head metadata
-func repo(userURL, domain string) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		return c.Render(http.StatusOK, "repo", &Repo{
-			UserURL: userURL,
-			Domain:  domain,
-			Message: "Nothing to see here;",
-			Path:    c.Param("repo"),
-		})
-	}
+func (s *Service) repo(c echo.Context) error {
+	return c.Render(http.StatusOK, "repo", &Repo{
+		UserURL: s.userURL,
+		Domain:  s.domain,
+		Message: "Nothing to see here;",
+		Path:    c.Param("repo"),
+	})
 }
 
 // Template is a renderer that contains html templates
